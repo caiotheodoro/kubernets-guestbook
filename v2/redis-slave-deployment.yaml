@@ -19,15 +19,7 @@ spec:
     spec:
       containers:
       - name: redis-slave
-        image: redis:5.0.5
-        command: ["/bin/sh"]
-        args: ["-c","redis-server --slaveof redis-master 6379"]
+        image: kubernetes/redis-slave:v2
         ports:
         - name: redis-server
           containerPort: 6379
-        volumeMounts:
-        - name: redis-storage
-          mountPath: /data
-      volumes:
-      - name: redis-storage
-        emptyDir: {}
